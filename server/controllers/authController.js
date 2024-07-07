@@ -5,12 +5,20 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 const handleLogin = async (req, res) => {
-  const { username, password, email, role } = req.body;
-  if (!username, !password, !email) return res.status(400).json({ "Error": "Fill all the required entries." });
-  const foundUser = await User.findOne({ username, email });
+  const { password, email } = req.body;
+  if ( !password, !email) return res.status(400).json({ 
+    errorCode: '#1001', 
+    message: "Fill all the required entries.",
+    success: false
+  });
+  const foundUser = await User.findOne({ email });
 
   // Unauthorized
-  if (!foundUser) return res.status(404).json({ "Error": "Requested User dosen't exists in the Database" });
+  if (!foundUser) return res.status(404).json({ 
+    errorCode: '#1002', 
+    message: "Requested user dosen't exist in the Database",
+    success: false
+  });
 
   // Evaluate the Password
   const match = await bcrypt.compare(password, foundUser.password);
@@ -20,7 +28,7 @@ const handleLogin = async (req, res) => {
     const accessToken = jwt.sign(
       {
         "UserInfo": {
-          "username": foundUser.username,
+          "id": foundUser.uid,
           "role": role
         }
       },
@@ -40,10 +48,18 @@ const handleLogin = async (req, res) => {
     console.log(result);
 
     res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: (24 * 60 * 60 * 1000) * 4 });
-    res.json({ accessToken });
+    res.json({ 
+      username: foundUser.username,
+      message: `Successfully logged in as ${foundUser.username}`,
+      success: true
+    });
   } else {
-    res.sendStatus(401);
+    return res.status(401).json({
+      erroCode: "#1003",
+      message: "Invalid password",
+      success: false
+    });
   }
 }
 
-module.exports = handleLogin 
+module.exports = handleLogin

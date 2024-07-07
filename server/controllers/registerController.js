@@ -4,8 +4,8 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const handleRegister = async (req, res) => {
-  const { username, password, email, role } = req.body;
-  if (!username || !password || !email || !role) res.status(400).json('Error: Required fields cannot be empty!');
+  const { username, password, email, role, region } = req.body;
+  if (!username || !password || !email || !role || !region) return res.status(400).json({ Error: 'Required fields cannot be empty!' });
 
   const duplicate = await User.findOne({ $or: [{ username }, { email }] }).exec();
   if (duplicate) return res.sendStatus(409); // ? - Conflict
@@ -32,6 +32,7 @@ const handleRegister = async (req, res) => {
       "password": password,
       email,
       "role": role,
+      region,
       tokens: {
         "refreshToken": refreshToken
       },
@@ -41,7 +42,7 @@ const handleRegister = async (req, res) => {
     console.log(result);
 
     res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: (24 * 60 * 60 * 1000) * 4 });
-    res.status(201).json({ 'suucess': `New User ${username} created!` })
+    return res.status(201).json({ 'suucess': `New User ${username} created!` })
   } catch (err) {
     res.status(500).json({ 'message': err.message });
   }
