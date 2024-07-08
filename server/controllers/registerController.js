@@ -4,11 +4,38 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const handleRegister = async (req, res) => {
-  const { username, password, email, role, region } = req.body;
-  if (!username || !password || !email || !role || !region) return res.status(400).json({ Error: 'Required fields cannot be empty!' });
-
-  const duplicate = await User.findOne({ $or: [{ username }, { email }] }).exec();
-  if (duplicate) return res.sendStatus(409); // ? - Conflict
+  const { username, password, email, role, region, phone } = req.body;
+  if (!username || !password || !email || !role || !region || !phone) return res.status(400).json({ 
+    errorCode: '#1001', 
+    message: "Fill all the required entries.",
+    success: false
+  });
+  
+  const duplicate = await User.findOne({
+    $or: [
+      { email: email },
+      { phone: phone }
+    ]
+  }).exec();
+  
+  if (duplicate) {
+    let message = '';
+    let errorCode = '';
+    if (duplicate.email === email) {
+      message = 'Email is already registered.';
+      errorCode = '#1004'
+    } else if (duplicate.phone === phone) {
+      message = 'Phone number is already registered.';
+      errorCode = '#1006'
+    }
+  
+    return res.status(409).json({
+      errorCode,
+      message: message,
+      success: false
+    });
+  }
+  
   try {
     const accessToken = jwt.sign(
       {
@@ -41,10 +68,19 @@ const handleRegister = async (req, res) => {
 
     console.log(result);
 
-    res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: (24 * 60 * 60 * 1000) * 4 });
-    return res.status(201).json({ 'suucess': `New User ${username} created!` })
+    res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: (24 * 60 * 60 * 1000) * 4 });
+    return res.status(201).json({ 
+      username,
+      message: `New User ${username} created!`,
+      success: true,
+      accessToken
+    })
   } catch (err) {
-    res.status(500).json({ 'message': err.message });
+    res.status(500).json({ 
+      errorCode: "#1005",
+      message: "Server encountered an unexpected condition",
+      success: false
+    });
   }
 }
 

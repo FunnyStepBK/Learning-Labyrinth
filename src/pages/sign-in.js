@@ -4,6 +4,7 @@ import sendFormData from './utils/sendFormData';
 
 export default function SignUp() {
   const [responseMessage, setResponseMessage] = useState('');
+  const [responseCode, setResponseCode] = useState('');
   const [responseStatus, setResponseStatus] = useState(false);
   const [responseSuccess, setResponseSuccess] = useState(false);
 
@@ -22,6 +23,7 @@ export default function SignUp() {
       const errorMessage = error.response?.data?.message || 'An error occurred';
       const errorCode = error.response?.data?.errorCode || 'Unknown error code';
       setResponseMessage(`${errorCode}: ${errorMessage}`);
+      setResponseCode(errorCode);
       setResponseStatus(true);
       setResponseSuccess(false);
     }
@@ -60,7 +62,7 @@ export default function SignUp() {
             </div>
           </div>
         ) : (
-          <div id={styles.responseOK}>
+          <div id={styles.responseOk}>
             <div id={styles.responseMessage}>
               {responseSuccess ? (
                 <div>

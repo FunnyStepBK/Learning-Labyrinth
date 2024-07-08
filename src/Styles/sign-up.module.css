@@ -7,6 +7,8 @@
   width: 100vw;
 
   font-family: sans-serif;
+
+  user-select: none;
 }
 
 #cardContainer {
@@ -112,10 +114,6 @@
 
   margin: 4px;
 
-  /* border-bottom: 5px solid transparent;
-  border-top: 5px solid transparent;
-  border-left: 6px solid #fff; */
-  
   transition: 0.3s;
 }
 
@@ -169,13 +167,12 @@
 
 .menu::-webkit-scrollbar-track {
   background: #404040;
-  border-radius: 0px 8px 8px 0px;
+  border-radius: 0px 4px 4px 0px;
 }
 
 .menu::-webkit-scrollbar-thumb {
   background: #727272;
   border-radius: 0px 3px 4px 0px;
-  padding: 1px;
 }
 
 .menu::-webkit-scrollbar-thumb:hover {
