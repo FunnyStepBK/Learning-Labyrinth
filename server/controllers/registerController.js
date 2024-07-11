@@ -7,7 +7,7 @@ const handleRegister = async (req, res) => {
   const { username, password, email, role, region, phone } = req.body;
   if (!username || !password || !email || !role || !region || !phone) return res.status(400).json({ 
     errorCode: '#1001', 
-    message: "Fill all the required entries.",
+    message: "Fill all the required entries!",
     success: false
   });
   
@@ -21,6 +21,7 @@ const handleRegister = async (req, res) => {
   if (duplicate) {
     let message = '';
     let errorCode = '';
+
     if (duplicate.email === email) {
       message = 'Email is already registered.';
       errorCode = '#1004'
@@ -45,19 +46,20 @@ const handleRegister = async (req, res) => {
         }
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '2min' }
+      { expiresIn: '7d' }
     );
 
     const refreshToken = jwt.sign(
       { "username": username },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: '10d' }
+      { expiresIn: '14d' }
     );
 
     const result = await User.create({
       "username": username,
       "password": password,
       email,
+      phone,
       "role": role,
       region,
       tokens: {

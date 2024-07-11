@@ -27,13 +27,14 @@ const handleRefreshToken = async (req, res) => {
             }
           },
           process.env.ACCESS_TOKEN_SECRET,
-          { expiresIn: '2min' }
+          { expiresIn: '7d' }
         );
         res.json({ accessToken });
       }
     );
   } catch (err) {
     console.error(`Error: ${err.message}`);
+    res.sendStatus(500);
   }
 }
 

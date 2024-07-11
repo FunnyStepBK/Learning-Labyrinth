@@ -8,7 +8,7 @@ const handleLogin = async (req, res) => {
   const { password, email } = req.body;
   if ( !password, !email) return res.status(400).json({ 
     errorCode: '#1001', 
-    message: "Fill all the required entries.",
+    message: "Fill all the required entries!",
     success: false
   });
   const foundUser = await User.findOne({ email });
@@ -33,13 +33,13 @@ const handleLogin = async (req, res) => {
         }
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: '2min' }
+      { expiresIn: '7d' }
     );
 
     const refreshToken = jwt.sign(
       { "username": foundUser.username },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: '10d' }
+      { expiresIn: '14d' }
     );
 
     // * Saving refresh token and the access token with the current user

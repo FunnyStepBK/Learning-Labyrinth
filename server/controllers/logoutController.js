@@ -1,8 +1,6 @@
 const User = require('../model/User');
 
 const handleLogout = async (req, res) => {
-  // localStorage.removeItem('accessToken'); // ? - Deleting the access token from the Client Side
-
   const cookies = req.cookies;
   if (!cookies?.jwt) return res.sendStatus(204);
   const refreshToken = cookies.jwt;
@@ -19,7 +17,10 @@ const handleLogout = async (req, res) => {
     console.log(`Successfully logged out: ${foundUser.username}`);
 
     res.clearCookie('jwt', { httpOnly: true, sameSite: 'None' });
-    res.sendStatus(204);
+    res.status(204).json({
+      message: "Logged out successfully.",
+      success: true
+    });
   } catch (err) {
     console.error(`Error: ${err.message}`);
   }
