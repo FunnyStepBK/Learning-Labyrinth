@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Learning Labyrinth
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Learning Labyrinth is an interactive learning platform designed to make learning more engaging and effective. Unlike traditional video-based educational platforms, Learning Labyrinth focuses on providing direct content in an interactive and structured format, similar to documentation or tutorials. This project is built using the MERN stack (MongoDB, Express, React, Node.js) and aims to create a comprehensive resource for learners.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Interactive Content**: Interactive lessons that go beyond static text, including quizzes, exercises, and interactive examples.
+- **User Authentication**: Secure user registration and login system with JWT authentication.
+- **Progress Tracking**: Track user progress and provide feedback.
+- **Customizable Learning Paths**: Create and follow personalized learning paths.
+- **Resource Management**: Add, update, and manage learning resources easily.
+- **Responsive Design**: Fully responsive design to provide a seamless learning experience across devices.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React, HTML5, CSS3
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: JWT (JSON Web Tokens)
+- **Hosting**: Not yet
+- **Version Control**: Git (Ofcourse)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. **Clone the repository:**
+  ```sh
+  git clone https://github.com/your-username/learning-labyrinth.git
+  cd learning-labyrinth
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
+- Visit http://localhost:3000 to view the application.
+- Register as a new user and log in.
+- Explore the interactive content and track your learning progress.
+Contributing
+- Contributions are welcome! Please read the CONTRIBUTING.md for details on the code of conduct and the process for submitting pull requests.
 
-### `npm run build`
+- **License**: This project is licensed under the MIT License - see the LICENSE file for details.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Acknowledgements
+- MongoDB
+- Express.js
+- React
+- Node.js
+- MDN Web Docs
+- Contact
+- **Name**: Manvendra (Your Name)
+- **Email**: your.email@example.com
+- **GitHub**: your-username
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Want to incorporate cool icons in your project? Try Flaticon -> [https://www.flaticon.com]
+The icon I used for my project: Fauna Animated Icons -> [https://www.flaticon.com/free-animated-icons/fauna]
