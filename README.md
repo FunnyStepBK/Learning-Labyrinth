@@ -28,6 +28,7 @@ Learning Labyrinth is an interactive learning platform designed to make learning
   ```sh
   git clone https://github.com/your-username/learning-labyrinth.git
   cd learning-labyrinth
+  ```
 
 ## Usage
 - Visit http://localhost:3000 to view the application.
@@ -52,3 +53,4 @@ Contributing
 
 Want to incorporate cool icons in your project? Try Flaticon -> [https://www.flaticon.com]
 The icon I used for my project: Fauna Animated Icons -> [https://www.flaticon.com/free-animated-icons/fauna]
+
