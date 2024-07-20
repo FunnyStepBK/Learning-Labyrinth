@@ -18,8 +18,8 @@ export default function SignUp() {
       setIsAuthenticated(authenticated);
       if (authenticated) {
         setTimeout(() => {
-          navigate('/home');
-        }, 10000);
+          window.location.href = 'http://localhost:3000/home';
+        }, 4000);
       }
     };
 
@@ -39,8 +39,8 @@ export default function SignUp() {
       setResponseSuccess(true);
       localStorage.setItem('accessToken', response.accessToken);
       setTimeout(() => {
-        navigate('/home');
-      }, 5000);
+        window.location.href = 'http://localhost:3000/home';
+      }, 4000);
     } catch (error) {
       const errorMessage = error.response?.data?.message || 'An error occurred';
       const errorCode = error.response?.data?.errorCode || 'Unknown error code';

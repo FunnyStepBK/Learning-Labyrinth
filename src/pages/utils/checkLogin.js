@@ -10,9 +10,11 @@ const isLoggedIn = async () => {
         const data = await response.json();
         localStorage.setItem('accessToken', data.accessToken);
         return true;
-      }
+      } else return false;
+
     } catch (err) {
-      console.error('Error checking refresh token:', err);
+      console.error('Error getting the refresh token.', err);
+      return false;
     }
   }
 }
