@@ -45,9 +45,10 @@ Contributing
 - Node.js
 - MDN Web Docs
 - Contact
-- **Name**: Manvendra (Your Name)
-- **Email**: your.email@example.com
-- **GitHub**: your-username
+- **Name**: Manvendra
+- **Email**: radekama372@gmail.com
+- **GitHub**: Come on man
+- **Discord**: @funnystep_bk
 
 Want to incorporate cool icons in your project? Try Flaticon -> [https://www.flaticon.com]
 The icon I used for my project: Fauna Animated Icons -> [https://www.flaticon.com/free-animated-icons/fauna]
