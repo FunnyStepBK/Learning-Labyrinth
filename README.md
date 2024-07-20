@@ -35,7 +35,7 @@ Learning Labyrinth is an interactive learning platform designed to make learning
 - Register as a new user and log in.
 - Explore the interactive content and track your learning progress.
 Contributing
-- Contributions are welcome! Please read the CONTRIBUTING.md for details on the code of conduct and the process for submitting pull requests.
+- Contributions are welcome! Please read the CONTRIBUTING.md for details on the code of conduct and the process for submitting pull requests. (Didn't made one yet)
 
 - **License**: This project is licensed under the MIT License - see the LICENSE file for details.
 
