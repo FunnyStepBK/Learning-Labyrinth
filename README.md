@@ -1,3 +1,5 @@
+My first Full-Stack web application -
+
 # Learning Labyrinth
 
 Learning Labyrinth is an interactive learning platform designed to make learning more engaging and effective. Unlike traditional video-based educational platforms, Learning Labyrinth focuses on providing direct content in an interactive and structured format, similar to documentation or tutorials. This project is built using the MERN stack (MongoDB, Express, React, Node.js) and aims to create a comprehensive resource for learners.
