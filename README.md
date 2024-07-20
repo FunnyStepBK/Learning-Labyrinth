@@ -52,5 +52,5 @@ Contributing
 - **Discord**: @funnystep_bk
 
 Want to incorporate cool icons in your project? Try Flaticon -> [https://www.flaticon.com]
-The icon I used for my project: Fauna Animated Icons -> [https://www.flaticon.com/free-animated-icons/fauna]
+The icons I used for my project: Fauna Animated Icons -> [https://www.flaticon.com/free-animated-icons/fauna]
 
