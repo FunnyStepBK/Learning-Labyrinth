@@ -45,7 +45,8 @@ Contributing
 - React
 - Node.js
 - MDN Web Docs
-- Contact
+
+ # Contact
 - **Name**: Manvendra
 - **Email**: radekama372@gmail.com
 - **GitHub**: Come on man
