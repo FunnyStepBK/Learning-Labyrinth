@@ -27,6 +27,9 @@ Learning Labyrinth is an interactive learning platform designed to make learning
 1. **Clone the repository:**
   ```sh
   git clone https://github.com/FunnyStepBK/learning-labyrinth.git
+  ```
+2. **Change your directory:**
+  ```sh
   cd learning-labyrinth
   ```
 
