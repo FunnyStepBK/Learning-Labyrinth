@@ -1,3 +1,5 @@
+My first Full-Stack web application -
+
 # Learning Labyrinth
 
 Learning Labyrinth is an interactive learning platform designed to make learning more engaging and effective. Unlike traditional video-based educational platforms, Learning Labyrinth focuses on providing direct content in an interactive and structured format, similar to documentation or tutorials. This project is built using the MERN stack (MongoDB, Express, React, Node.js) and aims to create a comprehensive resource for learners.
@@ -24,15 +26,20 @@ Learning Labyrinth is an interactive learning platform designed to make learning
 
 1. **Clone the repository:**
   ```sh
-  git clone https://github.com/your-username/learning-labyrinth.git
+  git clone https://github.com/FunnyStepBK/learning-labyrinth.git
+  ```
+2. **Change your directory:**
+  ```sh
   cd learning-labyrinth
+  ```
 
 ## Usage
 - Visit http://localhost:3000 to view the application.
 - Register as a new user and log in.
 - Explore the interactive content and track your learning progress.
-Contributing
-- Contributions are welcome! Please read the CONTRIBUTING.md for details on the code of conduct and the process for submitting pull requests.
+
+## Contributing
+- Contributions are welcome! Please read the CONTRIBUTING.md for details on the code of conduct and the process for submitting pull requests. (Didn't made one yet)
 
 - **License**: This project is licensed under the MIT License - see the LICENSE file for details.
 
@@ -42,10 +49,13 @@ Contributing
 - React
 - Node.js
 - MDN Web Docs
-- Contact
-- **Name**: Manvendra (Your Name)
-- **Email**: your.email@example.com
-- **GitHub**: your-username
+
+ # Contact
+- **Name**: Manvendra
+- **Email**: radekama372@gmail.com
+- **GitHub**: Come on man
+- **Discord**: @funnystep_bk
 
 Want to incorporate cool icons in your project? Try Flaticon -> [https://www.flaticon.com]
-The icon I used for my project: Fauna Animated Icons -> [https://www.flaticon.com/free-animated-icons/fauna]
+The icons I used for my project: Fauna Animated Icons -> [https://www.flaticon.com/free-animated-icons/fauna]
+
