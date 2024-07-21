@@ -8,6 +8,7 @@ const handleNewCourse = async (req, res) => {
     const key = req.headers['x-api-key'];
     const validApiKeys = [process.env.API_KEY_1, process.env.API_KEY_2];
     
+    // * - Check if the api key is correct
     if (!validApiKeys.includes(key)) {
       return res.status(401).json({
         errorCode: "#1003",

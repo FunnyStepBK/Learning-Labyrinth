@@ -2,7 +2,7 @@ const axios = require('axios');
 const path = require('path');
 const fsPromises = require('fs').promises;
 
-require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const apiUrl = process.env.API_URI || 'http://localhost:5000';
 const apiKey = process.env.API_KEY_1;
@@ -11,7 +11,7 @@ const apiKey = process.env.API_KEY_1;
 
 const addChapter = async () => {
   try {
-    const templatePath = path.join(__dirname, 'chapterTemplate.json');
+    const templatePath = path.join(__dirname, '..', 'templates', 'chapterTemplate.json');
     const chapterData = JSON.parse(await fsPromises.readFile(templatePath, 'utf-8'));
 
     const courseId = 'JS001';

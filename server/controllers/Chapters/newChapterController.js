@@ -8,26 +8,24 @@ const handleNewChapter = async (req, res) => {
     const key = req.headers['x-api-key'];
     const validApiKeys = [process.env.API_KEY_1, process.env.API_KEY_2];
 
+    // * - Check if the API key is correct
     if (!validApiKeys.includes(key)) {
       return res.status(401).json({
         errorCode: '#1003',
         message: 'Invalid API key.',
-        success: false,
-        api_key1: process.env.API_KEY_1 
+        success: false
       });
     }
     
     const courseId = req.params.courseId;
-    console.log('Received courseId:', courseId);
     const chapterData = req.body;
 
-    // ? - Check if the courseId provided in the url params exists is in the Database
+    // * - Check if the courseId provided in the url params exists is in the Database
     const course = await Course.findOne(courseId);
     if (!course) return res.status(404).json({
       errorCode: '#1002',
       message: 'Course not found',
       success: false,
-      courseId
     }); 
 
 
