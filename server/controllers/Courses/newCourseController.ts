@@ -1,0 +1,161 @@
+import { Request, Response } from 'express';
+import { Path } from 'react-router-dom';
+const Course = require('../../model/Course');
+const idMapper = require('../../model/idMappings');
+const path = require('path');
+const fsPromises = require('fs/promises');
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '..', '.env') });
+const { v4: uuid } = require('uuid');
+
+const generateId = (keyCharacter: string) => `${keyCharacter}${uuid()}`;
+
+// *--   Types  --* \\
+
+type S = string;
+
+type Section = {
+  type: S;
+  sectionTitle: S;
+  description: S;
+}
+
+type Question = {
+  questionHeading: S;
+  question: S; 
+  options: S[];
+  correctAnswer: S;
+}
+
+type Quiz = {
+  quizId: S;
+  title: S;
+  questions: Question[]; 
+}
+
+type Chapter = {
+  chapterId: S;
+  chapterName: S;
+  title: S;
+  description: S;
+  content: Section[];
+  quizzes: Quiz[] | undefined;
+}
+
+type CourseData = {
+  courseKeyCharacters: S;
+  courseId: S;
+  courseName: S;
+  title: S;
+  description: S;
+  chapters: Chapter[] | undefined;
+}
+
+// Types for Mapping the ids and other info
+
+type EntityChild = {
+  entityType: S;
+  entityName: S;
+  entityId: S;
+}
+
+type ChapterMappings = { 
+  entityType: S; 
+  entityName: S; 
+  entityId: S;
+  entityChildren: EntityChild[];
+}
+
+type CourseMappings = {
+  entityType: S;
+  entityName: S;
+  entityId: S;
+  entityChildren: ChapterMappings[];
+}
+
+const handleNewCourse = async (req: Request, res: Response): Promise<Response> => {
+  try {
+    const key = req.headers['x-api-key'] as string;
+    const validKeys = [process.env.API_KEY_1, process.env.API_KEY_2];
+
+    // * - Check if the API key is Valid
+    if (!validKeys.includes(key)) {
+      return res.status(401).json({
+        errorCode: '#1003',
+        message: 'Invalid API key',
+        success: false
+      });
+    }
+    
+    const templatePath: Path = path.join(__dirname, '..', '..', 'templates', 'courseTemplate.json'); 
+    const courseData: CourseData[] = JSON.parse(await fsPromises.readFile(templatePath, 'utf-8'));
+    
+    if (!courseData) {
+      return res.status(404).json({
+        errorCode: '#1002',
+        message: 'Please provide the course Data, and try again.',
+        success: false
+      });
+    }
+    
+    const mappedIds = [];
+    const createdCourses: CourseData[] = [];
+    for (const course of courseData) {
+      const keyCharacters = course.courseKeyCharacters;
+      course.courseId = generateId(keyCharacters);
+
+      let counter = -1;
+
+      const idMappings: CourseMappings = {
+        entityName: course.courseName,
+        entityId: course.courseId,
+        entityType: "course",
+        entityChildren: []
+      };
+
+      course.chapters?.forEach((chapter: Chapter) => {
+        chapter.chapterId = generateId(keyCharacters);
+        idMappings.entityChildren?.push({
+          entityId: chapter.chapterId,
+          entityName: chapter.chapterName,
+          entityType: "chapter",
+          entityChildren: [],
+        });
+
+        counter++;
+
+        chapter.quizzes?.forEach((quiz: Quiz) =>{
+          quiz.quizId = generateId(keyCharacters);
+          counter++;
+          idMappings.entityChildren[counter]?.entityChildren?.push({
+            entityId: quiz.quizId,
+            entityType: "quiz",
+            entityName: quiz.title,
+          });
+          console.log(idMappings);
+        });
+      });
+
+      const result = await Course.create(course);
+      const mapIds = await idMapper.create(idMappings);
+      createdCourses.push(result);
+      mappedIds.push(mapIds);
+    }
+    
+    return res.status(200).json({
+      message: `Successfully created the course/courses`,
+      success: true,
+      courseData,
+      mappedIds
+    });
+  } catch (error: any) {
+    console.error(error); 
+    return res.status(500).json({
+      errorCode: '#1005',
+      message: 'Server encountered an unexpected condition.',
+      success: false 
+    });
+  }
+} 
+
+module.exports = handleNewCourse;
+

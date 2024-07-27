@@ -1,11 +1,17 @@
 const mongoose = require('mongoose');
+const { type } = require('os');
 const Schema = mongoose.Schema;
+const { v4: uuid } = require('uuid');
 
 const chapterSchema = new Schema({
   chapterId: {
     type: String,
     required: true,
     unique: true
+  },
+  chapterName: {
+    type: String, 
+    required: true
   },
   title: {
     type: String,
@@ -24,25 +30,38 @@ const chapterSchema = new Schema({
   ],
   quizzes: [
     {
-      quizId: { type: String, required: true, unique: true },
+      title: {
+        type: String,
+        default: 'Quiz',
+        required: true
+      },
+      quizId: { 
+        type: String,
+        required: true,
+        unique: true
+      },
       questions: [
         {
+          questionHeading: { type: String, required: true },
           question: { type: String, required: true },
           options: { type: [String], required: true },
           correctAnswer: { type: String, required: true }
         }
       ]
     }
-  ],
-}, {
-  timestamps: true
-});
+  ]
+}, { _id: false });
 
 const courseSchema = new Schema({
+  courseKeyCharacters: { type: String, required: true },
   courseId: {
     type: String,
     required: true,
     unique: true
+  },
+  courseName: {
+    type: String, 
+    required: true
   },
   title: {
     type: String,
@@ -52,17 +71,9 @@ const courseSchema = new Schema({
     type: String,
     required: true
   },
-  chapters: [chapterSchema],
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
-  }
+  chapters: [chapterSchema]
 }, {
-  timestamps: true
+  timestamps: true 
 });
 
 const Course = mongoose.model('Course', courseSchema);

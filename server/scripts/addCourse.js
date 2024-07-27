@@ -17,6 +17,7 @@ const createCourse = async () => {
       }
     });
   
+    console.log(response.data);
   } catch (error) {
     if (error.response) {
       // * - Server responded with a status code different from 2xx

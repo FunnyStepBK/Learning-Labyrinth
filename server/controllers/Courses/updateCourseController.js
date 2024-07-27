@@ -20,8 +20,15 @@ const updateExistingCourse = async (req, res) => {
     const courseId = req.params.courseId;
     const updatedCourseData = req.body;
 
+    // * - If the courseId is not ptrovided
+    if (!courseId) return res.status(400).json({
+      errorCode: '#1001',
+      message: 'Provide the Course Id in order to procced with the process',
+      success: false
+    });
+    
     // * - Check if the courseId provided in the URL params exists in the database
-    const course = await Course.findOne(courseId);
+    const course = await Course.findOne({ courseId });
     if (!course) {
       return res.status(404).json({
         errorCode: '#1002',

@@ -1,11 +1,14 @@
 [
   {
-    "courseId": "PY001",
+    "courseKeyCharacters": "PYTHONFORNEWBIES-",
+    "courseId": "None",
+    "courseName": "Python for newbies.",
     "title": "Python Fundamentals",
     "description": "An introductory course to JavaScript covering basic concepts.",
     "chapters": [
       {
-        "chapterId": "PY00101",
+        "chapterId": "None",
+        "chapterName": "Getting Started",
         "title": "JavaScript basics",
         "description": "JavaScript is a programming language that adds interactivity to your website. This happens in games, in the behavior of responses when buttons are pressed or with data entry on forms; with dynamic styling; with animation, etc. This article helps you get started with JavaScript and furthers your understanding of what is possible.",
         "content": [
@@ -22,9 +25,10 @@
         ],
         "quizzes": [
           {
-            "quizId": "PYQ001",
+            "quizId": "None",
             "questions": [
               {
+                "questionHeading": "Questions",
                 "question": "What is JavaScript?",
                 "options": ["A programming language", "A database", "A markup language"],
                 "correctAnswer": "A programming language"

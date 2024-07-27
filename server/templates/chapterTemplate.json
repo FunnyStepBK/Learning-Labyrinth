@@ -1,6 +1,5 @@
 [
   {
-    "chapterId": "JS00102",
     "title": "What happened?",
     "description": "The heading text changed to Hello world! using JavaScript. You did this by using a function called querySelector() to grab a reference to your heading, and then store it in a variable called myHeading. This is similar to what we did using CSS selectors. When you want to do something to an element, you need to select it first.",
     "content": [
@@ -17,7 +16,6 @@
     ],
     "quizzes": [
       {
-        "quizId": "Q002",
         "questions": [
           {
             "question": "What is JavaScript?",

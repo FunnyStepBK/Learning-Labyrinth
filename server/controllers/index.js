@@ -7,6 +7,7 @@ const deleteUserController = require('./deleteController');
 
 const newCourseController = require('./Courses/newCourseController');
 const updateCourseController = require('./Courses/updateCourseController'); 
+const removeCourseController = require('./Courses/deleteCourseController');
 
 
 const newChapterController = require('./Chapters/newChapterController');
@@ -17,7 +18,10 @@ module.exports = {
   refreshController,
   logoutController,
   deleteUserController,
+  
   newCourseController,
   updateCourseController,
+  removeCourseController,
+  
   newChapterController
 };
