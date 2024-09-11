@@ -16,7 +16,7 @@ Learning Labyrinth is an interactive learning platform designed to make learning
 ## Technologies Used
 
 - **Frontend**: React, HTML5, CSS3
-- **Backend**: Node.js, Express.js
+- **Backend**: Node-Js, Express-Js & Rebuilding a part of the backend in rust.
 - **Database**: MongoDB
 - **Authentication**: JWT (JSON Web Tokens)
 - **Hosting**: Not yet
