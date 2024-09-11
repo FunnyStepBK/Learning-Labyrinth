@@ -48,7 +48,6 @@ Learning Labyrinth is an interactive learning platform designed to make learning
 - Express.js
 - Node.js
 - MDN Web Docs
-- Imba --> Going to startover the whole project but in imba.
 
  # Contact
 - **Name**: Manvendra
