@@ -97,7 +97,7 @@ const handleNewCourse = async (req: Request, res: Response): Promise<Response> =
       });
     }
     
-    const mappedIds: CourseMappings[] = [];
+    const mappedIds = [];
     const createdCourses: CourseData[] = [];
     for (const course of courseData) {
       const keyCharacters = course.courseKeyCharacters;
@@ -109,10 +109,8 @@ const handleNewCourse = async (req: Request, res: Response): Promise<Response> =
         entityName: course.courseName,
         entityId: course.courseId,
         entityType: "course",
-        entityChildren: [],
+        entityChildren: []
       };
-
-      console.log(idMappings);
 
       course.chapters?.forEach((chapter: Chapter) => {
         chapter.chapterId = generateId(keyCharacters);
@@ -133,16 +131,16 @@ const handleNewCourse = async (req: Request, res: Response): Promise<Response> =
             entityType: "quiz",
             entityName: quiz.title,
           });
+          console.log(idMappings);
         });
       });
-      
 
       const result = await Course.create(course);
       const mapIds = await idMapper.create(idMappings);
       createdCourses.push(result);
       mappedIds.push(mapIds);
     }
-
+    
     return res.status(200).json({
       message: `Successfully created the course/courses`,
       success: true,
