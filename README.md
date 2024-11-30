@@ -34,6 +34,7 @@ Learning Labyrinth is an interactive learning platform designed to make learning
   ```
 
 ## Usage
+### Note the server runs on port [https://localhost:5000]
 - Visit http://localhost:3000 to view the application.
 - Register as a new user and log in.
 - Explore the interactive content and track your learning progress.
